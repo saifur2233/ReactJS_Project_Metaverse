@@ -36,7 +36,7 @@ const Navbar = () => {
           <div className="flex items-center gap-3">
             <img src={Logo} alt="" className="h-16" />
             <p className="text-3xl">
-              VR <span className="font-bold">World</span>
+              Meta <span className="font-bold">Verse</span>
             </p>
           </div>
           {/* Desktop Menu section */}
