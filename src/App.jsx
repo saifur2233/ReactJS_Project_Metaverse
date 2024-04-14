@@ -1,35 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState, useEffect } from "react";
+import Navbar from "./Components/Navbar/Navbar";
+import Hero from "./Components/Hero/Hero";
+import Quotes from "./Components/Quotes/Quotes";
+import Banner from "./Components/Banner/Banner";
+import Banner2 from "./Components/Banner/Banner2";
+import Features from "./Components/Features/Features";
+import AppStore from "./Components/AppStore/AppStore";
+import Footer from "./Components/Footer/Footer";
+import PopupPlayer from "./Components/PopupPlayer/PopupPlayer";
 
-function App() {
-  const [count, setCount] = useState(0)
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+const App = () => {
+  const [isPlay, setIsPlay] = useState(false);
+
+  const togglePlay = () => {
+    setIsPlay(!isPlay);
+  };
+
+  useEffect(() => {
+    AOS.init({
+      offset: 100,
+      duration: 800,
+      easing: "ease-in-sine",
+      delay: 100,
+    });
+    AOS.refresh();
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <main className="overflow-x-hidden bg-white dark:bg-black text-black dark:text-white duration-300">
+      <Navbar />
+      <Hero togglePlay={togglePlay} />
+      <Quotes />
+      <Banner togglePlay={togglePlay} />
+      <Banner2 togglePlay={togglePlay} />
+      <Features />
+      <AppStore />
+      <Footer />
 
-export default App
+      {/* Video Player */}
+      <PopupPlayer isPlay={isPlay} togglePlay={togglePlay} />
+    </main>
+  );
+};
+
+export default App;
