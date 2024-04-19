@@ -35,8 +35,10 @@ const Navbar = () => {
           {/* logo section */}
           <div className="flex items-center gap-3">
             <img src={Logo} alt="" className="h-16" />
-            <p className="text-3xl">
-              Meta <span className="font-bold">Verse</span>
+            <p className="text-3xl font-bold">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+                 Metaverse
+                </span>
             </p>
           </div>
           {/* Desktop Menu section */}
